@@ -1,0 +1,59 @@
+{
+  "name": "@ims-view/mini-react",
+  "version": "0.0.1",
+  "description": "A mini-reactic alternative to React.",
+  "license": "MIT",
+  "repository": "eternallycyf/mini-react",
+  "author": "eternallycyf <969475322@qq.com>",
+  "main": "dist/mini-react.umd.js",
+  "module": "dist/mini-react.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "npx server",
+    "test": "ava",
+    "build:module": "rollup src/index.js -f es -n mini-react -o dist/index.es.js",
+    "build:main": "rollup src/index.js -f umd -n mini-react -o dist/index.umd.js",
+    "build": "run-p build:module build:main",
+    "prepublishOnly": "npm run build",
+    "publish": "npm run prepublishOnly && npm publish --access public"
+  },
+  "keywords": [
+    "react"
+  ],
+  "devDependencies": {
+    "ava": "^0.19.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.3.3",
+    "babel-register": "^6.24.1",
+    "browser-env": "^2.0.29",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.41.6"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {}
+      ]
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  }
+}

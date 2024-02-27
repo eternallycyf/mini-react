@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mini-react - Hello World</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- <script src="https://unpkg.com/@ims-view/mini-react"></script> -->
+  <script type="module">
+    import { render } from '../../dist/index.es.js';
+    const element = {
+      type: "div",
+      props: {
+        id: "container",
+        children: [
+          { type: "input", props: { value: "foo", type: "text" } },
+          { type: "a", props: { href: "/bar" } },
+          {
+            type: "span", props: {
+              title: 'span'
+            }
+          },
+          {
+            type: 'TEXT_ELEMENT', props: {
+              nodeValue: 'text',
+            }
+          }
+        ]
+      }
+    };
+
+    render(element, document.getElementById('root'))
+
+  </script>
+</body>
+
+</html>
