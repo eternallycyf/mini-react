@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mini-react - Hello World</title>
 </head>
 
 <body>
   <div id="root"></div>
+  <div id="root"></div>
+  <script src="https://unpkg.com/@ims-view/mini-react@0.0.3/dist/miniReact.umd.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/jsx" data-presets="es2016,react">
+      /** @jsx miniReact.createElement */
+      const root = document.getElementById("root");
+      miniReact.render(<div>hello world</div>, root);
+    </script>
   <script type="module">
-    import { render } from 'https://unpkg.com/@ims-view/mini-react@0.0.1/dist/index.es.js';
+    import { render } from 'https://unpkg.com/@ims-view/mini-react@0.0.2/dist/mini-react.es.js';
     const element = {
-      type: "div",
+      type: 'div',
       props: {
-        id: "container",
+        id: 'container',
         children: [
-          { type: "input", props: { value: "foo", type: "text" } },
-          { type: "a", props: { href: "/bar" } },
+          { type: 'input', props: { value: 'foo', type: 'text' } },
+          { type: 'a', props: { href: '/bar' } },
           {
-            type: "span", props: {
-              title: 'span'
-            }
+            type: 'span',
+            props: {
+              title: 'span',
+            },
           },
           {
-            type: 'TEXT_ELEMENT', props: {
+            type: 'TEXT_ELEMENT',
+            props: {
               nodeValue: 'text',
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     };
 
-    render(element, document.getElementById('root'))
+    render(element, document.getElementById('root'));
   </script>
-
 </body>
-
 </html>

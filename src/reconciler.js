@@ -1,7 +1,9 @@
+import { TEXT_ELEMENT } from './element.js';
+
 export function render(element, parentDom) {
   const { type, props } = element;
 
-  const isTextElement = type === 'TEXT_ELEMENT';
+  const isTextElement = type === TEXT_ELEMENT;
   const dom = isTextElement
     ? document.createTextNode('')
     : document.createElement(type);
