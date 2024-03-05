@@ -1,6 +1,6 @@
 {
   "name": "@ims-view/mini-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A mini-reactic alternative to React.",
   "license": "MIT",
   "repository": "eternallycyf/mini-react",
