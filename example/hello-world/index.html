@@ -8,8 +8,9 @@
 
 <body>
   <div id="root"></div>
-  <div id="root"></div>
-  <script src="https://unpkg.com/@ims-view/mini-react@0.0.3/dist/miniReact.umd.js"></script>
+  <div id="tick"></div>
+  <script src="../../dist/miniReact.umd.js"></script>
+  <!-- <script src="https://unpkg.com/@ims-view/mini-react@0.0.3/dist/miniReact.umd.js"></script> -->
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
   <script type="text/jsx" data-presets="es2016,react">
@@ -18,7 +19,7 @@
       miniReact.render(<div>hello world</div>, root);
     </script>
   <script type="module">
-    import { render } from 'https://unpkg.com/@ims-view/mini-react@0.0.2/dist/mini-react.es.js';
+    import { render } from 'https://unpkg.com/@ims-view/mini-react@0.0.3/dist/miniReact.es.js';
     const element = {
       type: 'div',
       props: {
@@ -43,6 +44,20 @@
     };
 
     render(element, document.getElementById('root'));
+  </script>
+  <script type="text/jsx" data-presets="es2016,react">
+    const rootDom = document.getElementById("tick");
+    console.log(rootDom)
+
+    function tick() {
+      const time = new Date().toLocaleTimeString();
+      /** @jsx miniReact.createElement */
+      const clockElement = <h1>{time}</h1>;
+      miniReact.render(clockElement, rootDom);
+    }
+
+    tick();
+    setInterval(tick, 1000);
   </script>
 </body>
 </html>

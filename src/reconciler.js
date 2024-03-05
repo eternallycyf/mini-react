@@ -27,4 +27,10 @@ export function render(element, parentDom) {
   childElements.forEach((childElement) => render(childElement, dom));
 
   parentDom.appendChild(dom);
+
+  if (!parentDom.lastChild) {
+    parentDom.appendChild(dom);
+  } else {
+    parentDom.replaceChild(dom, parentDom.lastChild);
+  }
 }
