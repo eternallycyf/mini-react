@@ -1,63 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mini-react - Hello World</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mini-react - Hello World</title>
+  </head>
 
-<body>
-  <div id="root">
-  </div>
-  <div id="tick"></div>
-  <script src="../../dist/miniReact.umd.js"></script>
-  <!-- <script src="https://unpkg.com/@ims-view/mini-react@0.0.3/dist/miniReact.umd.js"></script> -->
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <body>
+    <div id="root"></div>
+    <div id="tick"></div>
+    <script src="../../dist/index.js"></script>
+    <!-- <script src="https://unpkg.com/@ims-view/mini-react@0.0.5/dist/index.js"></script> -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  <!-- <script type="text/jsx" data-presets="es2016,react">
+    <script type="text/jsx" data-presets="es2016,react">
       /** @jsx miniReact.createElement */
-      const root = document.getElementById("root");
-      miniReact.render(<div>hello world</div>, root);
-  </script> -->
-  <script type="module">
-    // import { render } from 'https://unpkg.com/@ims-view/mini-react@0.0.3/dist/miniReact.es.js';
-    import { render } from '../../dist/miniReact.es.js';
-    const element = {
-      type: 'div',
-      props: {
-        id: 'container',
-        children: [
-          { type: 'input', props: { value: 'foo', type: 'text' } },
-          { type: 'a', props: { href: '/bar' } },
-          {
-            type: 'span',
-            props: {
-              title: 'span',
-            },
-          },
-          {
-            type: 'TEXT_ELEMENT',
-            props: {
-              nodeValue: 'text',
-            },
-          },
-        ],
-      },
-    };
 
-    render(element, document.getElementById('root'));
-  </script>
-  <script type="text/jsx" data-presets="es2016,react">
+      function App() {
+        const [count, setCount] = miniReact.useState(0);
 
-    function tick() {
-      const time = new Date().toLocaleTimeString();
-      /** @jsx miniReact.createElement */
-      const clockElement = <h1>{time}</h1>;
-      miniReact.render(clockElement, document.getElementById("tick"));
-    }
+        function handleClick() {
+          setCount((count) => count + 1);
+        }
 
-    tick();
-    setInterval(tick, 1000);
-  </script>
-</body>
+        miniReact.useEffect(() => {
+          const timer = setInterval(() => {
+            setCount((count) => count + 1);
+          }, 1000);
+          return () => clearTimeout(timer);
+        }, []);
+
+        return (
+          <div>
+            <p>{count}</p>
+            <button onClick={handleClick}>加一</button>
+          </div>
+        );
+      }
+
+      const root = document.getElementById('root');
+      miniReact.render(<App />, root);
+    </script>
+  </body>
 </html>

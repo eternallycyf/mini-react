@@ -1,6 +1,6 @@
 {
   "name": "@ims-view/mini-react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A mini-reactic alternative to React.",
   "license": "MIT",
   "repository": "eternallycyf/mini-react",
@@ -13,9 +13,7 @@
   "scripts": {
     "start": "npx server",
     "test": "ava",
-    "build:module": "rollup src/miniReact.js -f es -n miniReact -o dist/miniReact.es.js",
-    "build:main": "rollup src/miniReact.js -f umd -n miniReact -o dist/miniReact.umd.js",
-    "build": "run-p build:module build:main",
+    "build": "tsc",
     "prepublishOnly": "npm run build",
     "publish": "npm run prepublishOnly && npm publish --access public"
   },
@@ -30,7 +28,8 @@
     "babel-register": "^6.24.1",
     "browser-env": "^2.0.29",
     "npm-run-all": "^4.0.2",
-    "rollup": "^0.41.6"
+    "rollup": "^0.41.6",
+    "typescript": "^5.4.5"
   },
   "ava": {
     "require": [
